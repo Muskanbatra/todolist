@@ -8,7 +8,6 @@ export const Home = () => {
   // setNotes = it is a function that use to set value in useState hook
   const [notes, setNotes] = useState([]);
 
-  console.log(notes, " home array notes");
 
   return (
     <>
@@ -20,7 +19,7 @@ export const Home = () => {
         />
 
         {/* show notes  component*/}
-        <Shownotes data={notes} />
+        <Shownotes data={notes} setNotes={setNotes} />
       </div>
     </>
   );

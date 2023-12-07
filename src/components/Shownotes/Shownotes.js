@@ -16,7 +16,16 @@ const bull = (
   </Box>
 );
 
-export default function Shownotes({ data }) {
+export default function Shownotes({ data, setNotes }) {
+  const handledelete = (index) => {
+    // delete logic
+    setNotes((preNotes) => {
+      return preNotes.filter((item, id) => {
+        return index !== id;
+      });
+    });
+  };
+
   return (
     <Grid
       sx={{
@@ -27,7 +36,10 @@ export default function Shownotes({ data }) {
     >
       {data.map((item, index) => {
         return (
-          <Card key={index} sx={{ width: "90%", marginTop: "5rem", marginLeft: "2rem" }}>
+          <Card
+            key={index}
+            sx={{ width: "90%", marginTop: "5rem", marginLeft: "2rem" }}
+          >
             <CardContent>
               <Typography
                 sx={{ fontSize: 14 }}
@@ -42,7 +54,9 @@ export default function Shownotes({ data }) {
             </CardContent>
 
             <CardActions>
-              <Button size="small">Delete</Button>
+              <Button onClick={() => handledelete(index)} size="small">
+                Delete
+              </Button>
             </CardActions>
           </Card>
         );
