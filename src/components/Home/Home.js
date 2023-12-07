@@ -3,13 +3,24 @@ import Notes from "../Notes/Notes";
 import Shownotes from "../Shownotes/Shownotes";
 
 export const Home = () => {
+  // data base in a array form
+  // notes = variable use to access value from state
+  // setNotes = it is a function that use to set value in useState hook
   const [notes, setNotes] = useState([]);
+
+  console.log(notes, " home array notes");
 
   return (
     <>
       <div>
-        <Notes />
-        <Shownotes />
+        {/* add notes component */}
+        <Notes
+          // props delling
+          addNotes={setNotes}
+        />
+
+        {/* show notes  component*/}
+        <Shownotes data={notes} />
       </div>
     </>
   );

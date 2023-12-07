@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
+
 const bull = (
   <Box
     component="span"
@@ -15,57 +16,37 @@ const bull = (
   </Box>
 );
 
-export default function Shownotes() {
+export default function Shownotes({ data }) {
   return (
     <Grid
       sx={{
         display: "grid",
-        gridTemplateColumns: "repeat(4,1fr)",
+        gridTemplateColumns: "repeat(3,1fr)",
         margin: "auto",
       }}
     >
-      <Card sx={{ width: "90%", marginTop: "5rem", marginLeft: "2rem" }}>
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Title
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            Description
-          </Typography>
-        </CardContent>
+      {data.map((item, index) => {
+        return (
+          <Card key={index} sx={{ width: "90%", marginTop: "5rem", marginLeft: "2rem" }}>
+            <CardContent>
+              <Typography
+                sx={{ fontSize: 14 }}
+                color="text.secondary"
+                gutterBottom
+              >
+                {item.title}
+              </Typography>
+              <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                {item.des}
+              </Typography>
+            </CardContent>
 
-        <CardActions>
-          <Button size="small">Delete</Button>
-        </CardActions>
-      </Card>
-      <Card sx={{ width: "90%", marginTop: "5rem", marginLeft: "2rem" }}>
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Title
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            Description
-          </Typography>
-        </CardContent>
-
-        <CardActions>
-          <Button size="small">Delete</Button>
-        </CardActions>
-      </Card>
-      <Card sx={{ width: "90%", marginTop: "5rem", marginLeft: "2rem" }}>
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Title
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            Description
-          </Typography>
-        </CardContent>
-
-        <CardActions>
-          <Button size="small">Delete</Button>
-        </CardActions>
-      </Card>
+            <CardActions>
+              <Button size="small">Delete</Button>
+            </CardActions>
+          </Card>
+        );
+      })}
     </Grid>
   );
 }
