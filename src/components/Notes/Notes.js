@@ -10,7 +10,7 @@ import { Grid } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useState } from "react";
 
-// mui style uthaya hai wesite 
+// mui style uthaya hai wesite
 const bull = (
   <Box
     component="span"
@@ -19,9 +19,8 @@ const bull = (
     •
   </Box>
 );
-                            // props destructuring kiya hai props ka 
+// props destructuring kiya hai props ka
 export default function Notes({ addNotes }) {
-
   // state to store notes when use try to write title and desciption
 
   // temporary  data base that store single notes
@@ -29,19 +28,24 @@ export default function Notes({ addNotes }) {
     title: "",
     des: "",
   });
-   
-  // function when use click to save button 
-  const handleSaveNotes = () => {
 
+  // use to hidden the description and save button
+  const [hidden, seHiden] = useState(false);
+
+  // function when use click to save button
+  const handleSaveNotes = () => {
     // array database store kar deta hai temporary  data base
     addNotes((preNotes) => {
       return [...preNotes, notes];
     });
-     
+
     //temporary  data base ko khali kar do bhai
     setNotes({ title: "", des: "" });
   };
 
+  const handleShow = () => {
+    seHiden(true);
+  };
 
   return (
     <Card sx={{ width: "30%", margin: "auto", marginTop: "5rem" }}>
@@ -56,9 +60,9 @@ export default function Notes({ addNotes }) {
           }}
         >
           <Typography>Add Your Notes</Typography>
-          <AddIcon sx={{ cursor: "pointer" }} />
+          <AddIcon onClick={handleShow} sx={{ cursor: "pointer" }} />
         </Grid>
-        
+
         <TextField
           sx={{ marginBottom: "2rem" }}
           id="standard-basic"
@@ -70,18 +74,26 @@ export default function Notes({ addNotes }) {
           }
         />
 
-        <Typography>Description</Typography>
-        <Textarea
-          minRows={2}
-          value={notes.des}
-          onChange={(event) =>
-            setNotes((pre) => ({ ...pre, des: event.target.value }))
-          }
-        />
+        {hidden ? (
+          <>
+            <Typography>Description</Typography>
+            <Textarea
+              minRows={2}
+              value={notes.des}
+              onChange={(event) =>
+                setNotes((pre) => ({ ...pre, des: event.target.value }))
+              }
+            />
+          </>
+        ) : (
+          ""
+        )}
       </CardContent>
-      <CardActions>
-        <Button onClick={handleSaveNotes}>Save</Button>
-      </CardActions>
+      {hidden && (
+        <CardActions>
+          <Button onClick={handleSaveNotes}>Save</Button>
+        </CardActions>
+      )}
     </Card>
   );
 }
