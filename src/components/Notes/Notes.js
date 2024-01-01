@@ -48,7 +48,16 @@ export default function Notes({ addNotes }) {
   };
 
   return (
-    <Card sx={{ width: "30%", margin: "auto", marginTop: "5rem" }}>
+    <Card
+      sx={{
+        width: "30%",
+        margin: "auto",
+        marginTop: "5rem",
+        '@media (max-width: 500px)': {
+          width: "80%",
+        },
+      }}
+    >
       <CardContent sx={{ margin: "auto" }}>
         <Grid
           sx={{

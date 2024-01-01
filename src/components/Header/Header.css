@@ -1,0 +1,63 @@
+.barnav{
+    background-color: rgb(5, 179, 228);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.5rem 4rem;
+    align-items: center;
+}
+
+.rightNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.leftname{
+    font-size: 20px;
+}
+
+.icon{
+    display: none;
+    font-size: 1.5rem;
+}
+.sideNav{
+    position: fixed;
+    /* display: none; */
+    width: 0%;
+    z-index: 10;
+    top: 5rem;
+    left: 0;
+    background-color: rgb(5, 179, 228);
+    color: white;
+    transition: 0.5s;
+    overflow-x: hidden;
+    height: 100%;
+    display: none;
+}
+
+.sideNav a{
+    font-size: 20px;    
+}
+
+.sidetab{
+ padding: 10px 20px;
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .hidden{
+        display:none;
+    }
+
+    .icon{
+        display: block;
+    }
+    .sideNav{
+       display: block;
+    }
+
+}

@@ -21,6 +21,7 @@ export const Home = () => {
         {/* show notes  component*/}
         <Shownotes data={notes} setNotes={setNotes} />
       </div>
+      
     </>
   );
 };
